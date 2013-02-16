@@ -43,7 +43,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(function(req, res, next) {
-    res.locals.messages = req.session.messages
+    res.locals.currentUser = req.session.currentUser
     next();
   });
 });
@@ -51,6 +51,9 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
+
+// Helpers
+require('./apps/helpers')(app);
 
 // Routes
 //app.get('/', routes.index);

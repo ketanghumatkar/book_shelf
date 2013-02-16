@@ -5,6 +5,8 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/#{stylesheet}.css')
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/bootstrap.min.js')
   body
     div.container-narrow
       div.masthead
@@ -12,12 +14,21 @@ html
           li.active
             a(href='#') Home
           li
-            a(href='#') About
+            a&nbsp;
           li
-            a(href='#') Contact
+            //a(style="color:grey") Welcome Vishal!
+            div.btn-group
+              button.btn(data-toggle='dropdown')
+                | Hi Vishal!
+                button.btn.dropdown-toggle(data-toggle='dropdown')
+                  span.caret
+              ul.dropdown-menu
+                li
+                  a(href='#') Logout
         h3.muted Book Shelf #{title ? " - " + title : ""}
       hr
       include flash_messages
+      //p=printName("Vishal")
       div.row-fluid.marketing
         block content
       hr
