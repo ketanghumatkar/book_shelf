@@ -4,6 +4,7 @@ class Book
   @key: ->
     #"book_shelf_#{process.env.NODE_ENV}"
     "book_shelf_development"
+  @states: -> ['unread', 'reading', 'read']
   @all: (callback) ->
     redis.hgetall Book.key(), (err, objects) ->
       books = []
@@ -11,6 +12,13 @@ class Book
         book = new Book JSON.parse(json)
         books.push book
       callback null, books
+  @getById: (id, callback) ->
+    redis.hget Book.key(), id, (err, json) ->
+      if json is null
+        callback new Error("Book '#{id}' could not be found.")
+        return
+      book = new Book JSON.parse(json)
+      callback null, book
   constructor: (attributes) ->
     @[key] = value for key, value of attributes
     @setDefaults()

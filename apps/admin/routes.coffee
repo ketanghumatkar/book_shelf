@@ -34,4 +34,13 @@ routes = (app) ->
           req.flash "success", "Book - #{book.name} added successfully"
           res.redirect '/admin/books'
 
+      app.put '/:id', (req, res) ->
+        Book.getById req.params.id, (err, book) ->
+          if req.body.state in Book.states
+            book[req.body.state] ->
+              res.send "OK"
+          #else
+          # res.render 'error',
+          #   status: 403
+
 module.exports = routes
