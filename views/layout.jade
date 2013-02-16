@@ -1,0 +1,25 @@
+doctype 5
+html
+  head
+    title= "Bookshelf :: " + title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/#{stylesheet}.css')
+  body
+    div.container-narrow
+      div.masthead
+        ul.nav.nav-pills.pull-right
+          li.active
+            a(href='#') Home
+          li
+            a(href='#') About
+          li
+            a(href='#') Contact
+        h3.muted Book Shelf #{title ? " - " + title : ""}
+      hr
+      include flash_messages
+      div.row-fluid.marketing
+        block content
+      hr
+      div.footer
+        p © Webonise Lab 2013

@@ -1,0 +1,22 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "./bin/server"
+  },
+  "dependencies": {
+    "express": "3.1.0",
+    "jade": "*",
+    "coffee-script": "~1.4.0",
+    "twitter-bootstrap-node": "~0.1.2",
+    "redis": "~0.8.2",
+    "hiredis": "~0.1.14",
+    "connect-redis": "~1.4.5",
+    "connect-flash": "~0.1.0",
+    "flashify": "~0.1.0"
+  },
+  "devDependancies": {
+    "node-dev": "~0.2.10"
+  }
+}

@@ -1,0 +1,6 @@
+- console.log(flash)
+- var flashTypes = ['success', 'error', 'info']
+each flashType in flashTypes
+  if flash[flashType]
+    p.alert(class="alert-#{flashType}")
+      = flash[flashType]

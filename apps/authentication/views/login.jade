@@ -1,0 +1,15 @@
+extends ../../../views/layout
+
+block content
+  form.form-horizontal(action="/sessions", method="post")
+    div.control-group
+      label.control-label(for='username') Username
+      div.controls
+        input#username(type='text',placeholder='Username',name='username')
+    div.control-group
+      label.control-label(for='password') Password
+      div.controls
+        input#password(type='password',placeholder='Password',name='password')
+    div.control-group
+      div.controls
+        button.btn(type='submit') Sign in
