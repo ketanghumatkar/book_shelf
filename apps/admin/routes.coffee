@@ -6,6 +6,13 @@ routes = (app) ->
 
     app.namespace '/books', ->
 
+      app.all '/*', (req, res, next) ->
+        if not (req.session.currentUser)
+          req.flash "error", "Please login first !"
+          res.redirect '/login'
+          return
+        next()
+
       app.get '/', (req, res) ->
         book = new Book {}
         res.render "#{__dirname}/views/books/all",
@@ -20,7 +27,6 @@ routes = (app) ->
           language: req.body.language
         book = new Book(attributes)
         book.save (err, book) ->
-          console.log("#{book.name} was added")
           req.flash "success", "Book - #{book.name} added successfully"
           res.redirect '/admin/books'
 

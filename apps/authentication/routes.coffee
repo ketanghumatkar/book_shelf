@@ -10,7 +10,7 @@ routes = (app) ->
     if ("vishal" is req.body.username) and ("12345" is req.body.password)
       req.session.currentUser = req.body.username
       req.flash "success", "Hi #{req.session.currentUser}, you're logged in"
-      res.redirect '/login'
+      res.redirect '/admin/books'
       return
     req.flash "error", 'Wrong credentials! Try again'
     res.redirect '/login'
