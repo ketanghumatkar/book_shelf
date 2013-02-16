@@ -1,6 +1,10 @@
+redis = require('redis').createClient()
+
 class Book
-  constructor: (arguments) ->
-    @[key] = value for key, value of arguments
+  @key: ->
+    "book_shelf_#{process.env.NODE_ENV}"
+  constructor: (attributes) ->
+    @[key] = value for key, value of attributes
     @setDefaults()
     @
   setDefaults: ->
@@ -10,5 +14,9 @@ class Book
   generateId: ->
     if not @id and @name
       @id = @name.replace /\s/g, '-'
+  save: (callback) ->
+    @generateId()
+    redis.hset Book.key(), @id, JSON.stringify(@), (err, code) =>
+      callback null, @
 
 module.exports = Book

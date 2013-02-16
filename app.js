@@ -5,7 +5,8 @@
 
 require('coffee-script');
 
-var express = require('express')
+var express = require('express')//.createServer()
+  //, Handlebars = require('handlebars')
   , RedisStore = require('connect-redis')(express)
   , flashify = require('flashify')
   , fs = require('fs')
@@ -13,6 +14,10 @@ var express = require('express')
   //, user = require('./routes/user')
   , http = require('http')
   , path = require('path');
+
+require('express-namespace');
+
+//require('express-handlebars')(app, Handlebars);
 
 var app = express();
 
@@ -43,7 +48,8 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(function(req, res, next) {
-    res.locals.currentUser = req.session.currentUser
+    res.locals.session = req.session;
+    res.locals.currentUser = req.session.currentUser;
     next();
   });
 });
@@ -56,8 +62,8 @@ app.configure('development', function(){
 require('./apps/helpers')(app);
 
 // Routes
-//app.get('/', routes.index);
 require('./apps/authentication/routes')(app);
+require('./apps/admin/routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
