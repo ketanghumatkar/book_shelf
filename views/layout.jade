@@ -15,16 +15,17 @@ html
             a(href='#') Home
           li
             a&nbsp;
-          li
-            //a(style="color:grey") Welcome Vishal!
-            div.btn-group
-              button.btn(data-toggle='dropdown')
-                | Hi Vishal!
-                button.btn.dropdown-toggle(data-toggle='dropdown')
-                  span.caret
-              ul.dropdown-menu
-                li
-                  a(href='#') Logout
+          if undefined != currentUser
+            li
+              //a(style="color:grey") Welcome Vishal!
+              div.btn-group
+                button.btn(data-toggle='dropdown')
+                  | Hi #{currentUser} !
+                  button.btn.dropdown-toggle(data-toggle='dropdown')
+                    span.caret
+                ul.dropdown-menu
+                  li
+                    a(href='/logout') Logout
         h3.muted Book Shelf #{title ? " - " + title : ""}
       hr
       include flash_messages

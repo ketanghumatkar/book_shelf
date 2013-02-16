@@ -1,4 +1,39 @@
 extends ../../../../views/layout
 
 block content
+
+  h5.muted(style="padding-left: 200px;")
+    i.icon-plus
+    | &nbsp; Add a new Book
   include _form.jade
+
+  if books.length > 0
+    hr
+    table.table.table-striped.table-hover#listing
+      thead
+        tr
+          th Book Title
+          th Author
+          th Language
+          th Read, huh?
+          th
+            i.icon-wrench
+      tbody
+      each book in books
+        tr
+          td= book.name
+          td= book.author
+          td= book.language
+          td
+            case book.state
+              when "read"
+                i.icon-ok
+              when "reading"
+                p Yeah, readin'
+              when "unread"
+                p Nope
+              default
+                i.icon-thumbs-down
+          td
+            a.btn.btn-mini.btn-danger
+              i.icon-remove.icon-white

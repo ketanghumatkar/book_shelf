@@ -6,7 +6,9 @@ routes = (app) ->
 
     app.namespace '/books', ->
 
+      # authenticate!
       app.all '/*', (req, res, next) ->
+      # OR, auth = (req, res, next) ->
         if not (req.session.currentUser)
           req.flash "error", "Please login first !"
           res.redirect '/login'
@@ -15,10 +17,12 @@ routes = (app) ->
 
       app.get '/', (req, res) ->
         book = new Book {}
-        res.render "#{__dirname}/views/books/all",
-          title: 'All Books'
-          stylesheet: 'admin'
-          book: book
+        Book.all (err, books) ->
+          res.render "#{__dirname}/views/books/all",
+            title: 'All Books'
+            stylesheet: 'admin'
+            book: book
+            books: books
 
       app.post '/', (req, res) ->
         attributes =

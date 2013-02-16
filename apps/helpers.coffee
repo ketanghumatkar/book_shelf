@@ -6,6 +6,9 @@ helpers = (app) ->
         "/admin/books/#{object.id}"
       else
         "/admin/books/"
+    currentUser: (req, res) ->
+      req.session.currentUser
+      ()
 
   #app.dynamicHelper
   #  urlFor: (req, res) ->
