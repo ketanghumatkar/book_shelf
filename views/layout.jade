@@ -10,25 +10,35 @@ html
       div.masthead
         ul.nav.nav-pills.pull-right
           li.active
-            a(href='#') Home
+            a(href='/')
+              | Showcase &nbsp;
+              i.icon-tasks
           li
             a&nbsp;
           if undefined != currentUser
             li
               div.btn-group
                 button.btn(data-toggle='dropdown')
-                  | Hi #{currentUser} !
+                  i.icon-user
+                  | &nbsp; Hi #{currentUser} !
                   button.btn.dropdown-toggle(data-toggle='dropdown')
                     span.caret
                 ul.dropdown-menu
                   li
-                    a(href='/logout') Logout
-        h3.muted Book Shelf #{title ? " - " + title : ""}
+                    a(href='/admin/books')
+                      i.icon-edit &nbsp; &nbsp; Manage Shelf
+                  li
+                    a(href='/logout')
+                      i.icon-off &nbsp; &nbsp; Logout
+        h2.page-title.muted Book Shelf #{title ? " - " + title : ""}
       hr
       include flash_messages
       div.row-fluid.marketing
         block content
       hr
       div.footer
-        p © Webonise Lab 2013
+        | 2013 ©
+        a(href="http://twitter.com/suruwat")
+          |  Vishal
+        |  @ Webonise Lab
     != js('application')

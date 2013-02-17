@@ -65,6 +65,7 @@ require('./apps/helpers')(app);
 // Routes
 require('./apps/authentication/routes')(app);
 require('./apps/admin/routes')(app);
+require('./apps/showcase/routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

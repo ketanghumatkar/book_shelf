@@ -8,6 +8,10 @@ body {
   & > hr {
     margin: 30px 0;
   }
+  .page-title {
+    text-shadow: 0 2px 0 #ddd;
+    font-family: "Consolas", Arial, sans-serif;
+  }
 }
 .marketing {
   margin: 60px 0;
@@ -17,15 +21,49 @@ body {
     }
   }
 }
-.jumbotron {
-  margin: 60px 0;
+.footer {
+  color: #555;
+  font-size: 12px;
+  font-family: 'Ubuntu', Arial, sans-serif;
   text-align: center;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-  h1 {
-    font-size: 72px;
-    line-height: 1;
-  }
+}
+
+// Books Listing
+
+td.status .unread,td.status .reading,td.status .read {
+    cursor: pointer;
+    font-size: 12px;
+    background-size: 2.7777777777777777em;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    letter-spacing: 0;
+    opacity: 0.5;
+    padding: 0 5px;
+}
+td.status {
+    div.read {
+        p {
+            color: #070;
+            text-shadow: 5px 1px 5px #0f0;
+        }
+    }
+    div.unread {
+        p {
+            color: #ccc;
+            text-shadow: 5px 1px 5px #eee;
+        }
+    }
+    div.reading {
+        p {
+            color: #444;
+            text-shadow: 5px 1px 5px #999;
+        }
+    }
+}
+td.status div, td.status div p {
+    display: inline-block;
+}
+td.status .unread:hover,td.status .reading:hover,td.status .read:hover,td.status .unread.on,td.status .reading.on,td.status .read.on {
+    opacity: 1;
+    box-shadow: inset 1px 3px 3px #ccc;
 }

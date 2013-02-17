@@ -12,6 +12,10 @@ class Book
         book = new Book JSON.parse(json)
         books.push book
       callback null, books
+  @active: (callback) ->
+      Book.all (err, books) ->
+        activeBooks = (book for book in books when book.state isnt 'unread')
+        callback null, activeBooks
   @getById: (id, callback) ->
     redis.hget Book.key(), id, (err, json) ->
       if json is null

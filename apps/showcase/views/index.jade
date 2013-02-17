@@ -1,11 +1,8 @@
-extends ../../../../views/layout
+extends ../../../views/layout
 
 block content
 
-  h5.muted(style="padding-left: 200px;")
-    i.icon-plus
-    | &nbsp; Add a new Book
-  include _form.jade
+  h1 Book Showcase
 
   if books.length > 0
     hr
@@ -16,8 +13,6 @@ block content
           th Author
           th Language
           th Read, huh?
-          th
-            i.icon-wrench
       tbody
       each book in books
         tr(data-id=book.id)
@@ -25,12 +20,10 @@ block content
           td= book.author
           td= book.language
           td.status
-            div(class=cssClassForState('unread', book.state))
-              p unread
             div(class=cssClassForState('reading', book.state))
               p reading
             div(class=cssClassForState('read', book.state))
-                p read
-          td
-            a.btn.btn-mini.btn-danger
-              i.icon-remove.icon-white
+                p Hmm!
+  else
+    p.alert.alert-info
+      | No books added yet to the shelf! ;)

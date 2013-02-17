@@ -1,0 +1,7 @@
+td.status .unread,td.status .reading,td.status .read {
+  cursor: default !important;
+}
+td.status .unread:hover,td.status .reading:hover,td.status .read:hover {
+  box-shadow: 0 0 0 #ccc;
+  opacity: 0.5;
+}

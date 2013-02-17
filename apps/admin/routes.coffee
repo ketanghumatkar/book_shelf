@@ -19,7 +19,7 @@ routes = (app) ->
         book = new Book {}
         Book.all (err, books) ->
           res.render "#{__dirname}/views/books/all",
-            title: 'All Books'
+            title: 'Admin Area'
             stylesheet: 'admin'
             book: book
             books: books
