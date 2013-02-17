@@ -1,5 +1,9 @@
 routes = (app) ->
 
+  app.all '/*', (req, res, next) ->
+    res.locals.currentUser = req.session.currentUser
+    next()
+
   app.get '/login', (req, res) ->
     res.render "#{__dirname}/views/login",
       title: 'Login'

@@ -16,7 +16,8 @@
     "connect-flash": "~0.1.0",
     "flashify": "~0.1.0",
     "express-namespace": "~0.1.1",
-    "express-handlebars": "0.0.2"
+    "express-handlebars": "0.0.2",
+    "connect-assets": "~2.2.1"
   },
   "devDependancies": {
     "node-dev": "~0.2.10"

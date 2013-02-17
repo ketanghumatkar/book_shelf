@@ -27,9 +27,18 @@ class Book
     unless @state
       @state = 'unread'
     @generateId()
+    @defineStateMachine()
   generateId: ->
     if not @id and @name
       @id = @name.replace /\s/g, '-'
+  defineStateMachine: ->
+    for state in Book.states
+      do (state) =>
+        @[state] = (callback) ->
+          @state = state
+          @stateUpdatedAt = (new Date).getTime()
+          @save ->
+            callback()
   save: (callback) ->
     @generateId()
     redis.hset Book.key(), @id, JSON.stringify(@), (err, code) =>
