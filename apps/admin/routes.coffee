@@ -44,5 +44,10 @@ routes = (app) ->
           #else
           # res.render 'error',
           #   status: 403
+      app.get '/:id/delete', (req, res) ->
+        Book.getById req.params.id, (err, book) ->
+          book.delete (err, book) ->
+            req.flash "success", "Book - #{book.name} deleted successfully"
+            res.redirect '/admin/books'
 
 module.exports = routes

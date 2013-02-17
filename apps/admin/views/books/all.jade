@@ -32,5 +32,5 @@ block content
             div(class=cssClassForState('read', book.state))
                 p read
           td
-            a.btn.btn-mini.btn-danger
+            a.btn.btn-mini.btn-danger(href="/admin/books/#{book.id}/delete")
               i.icon-remove.icon-white

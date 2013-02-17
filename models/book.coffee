@@ -47,5 +47,9 @@ class Book
     @generateId()
     redis.hset Book.key(), @id, JSON.stringify(@), (err, code) =>
       callback null, @
+  delete: (callback) ->
+    redis.hdel Book.key(), @id, (err, code) =>
+      callback null, @
+
 
 module.exports = Book
