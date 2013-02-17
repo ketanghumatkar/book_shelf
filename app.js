@@ -4,6 +4,7 @@
  */
 
 require('coffee-script');
+require('less');
 
 var express = require('express')//.createServer()
   //, Handlebars = require('handlebars')
@@ -46,6 +47,7 @@ app.configure(function(){
   }));
   app.use(flashify);
   app.use(app.router);
+  app.use(require('connect-assets')());
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(function(req, res, next) {
     //res.locals.session = req.session;

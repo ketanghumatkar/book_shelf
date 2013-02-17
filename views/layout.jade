@@ -2,11 +2,9 @@ doctype 5
 html
   head
     title= "Bookshelf :: " + title
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    != css('bootstrap.min')
+    != css('application')
     link(rel='stylesheet', href='/stylesheets/#{stylesheet}.css')
-    script(src='/javascripts/jquery.min.js')
-    script(src='/javascripts/bootstrap.min.js')
   body
     div.container-narrow
       div.masthead
@@ -33,3 +31,4 @@ html
       hr
       div.footer
         p © Webonise Lab 2013
+    != js('application')

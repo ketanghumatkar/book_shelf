@@ -20,7 +20,7 @@ block content
             i.icon-wrench
       tbody
       each book in books
-        tr
+        tr(data-id=book.id)
           td= book.name
           td= book.author
           td= book.language
