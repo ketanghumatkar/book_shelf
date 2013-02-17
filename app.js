@@ -7,22 +7,15 @@ require('coffee-script');
 require('less');
 require('express-namespace');
 
-var express = require('express')//.createServer()
-  //, Handlebars = require('handlebars')
+var express = require('express')
   , http = require('http')
   , app = express()
   , server = http.createServer(app)
   , RedisStore = require('connect-redis')(express)
   , flashify = require('flashify')
   , fs = require('fs')
-  //, routes = require('./routes')
-  //, user = require('./routes/user')
   , http = require('http')
   , path = require('path');
-
-
-//require('express-handlebars')(app, Handlebars);
-
 
 
 var logFile = fs.createWriteStream('./devlog.log', {flags: 'a'});
