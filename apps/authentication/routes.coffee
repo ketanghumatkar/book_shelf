@@ -25,4 +25,4 @@ routes = (app) ->
       req.flash "info", "You're logged out successfully"
       res.redirect "/login"
 
-module.exports = routes
+module.exports = routes # this makes routes accessible when requiring the file
