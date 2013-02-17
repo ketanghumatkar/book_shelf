@@ -5,9 +5,13 @@
 
 require('coffee-script');
 require('less');
+require('express-namespace');
 
 var express = require('express')//.createServer()
   //, Handlebars = require('handlebars')
+  , http = require('http')
+  , app = express()
+  , server = http.createServer(app)
   , RedisStore = require('connect-redis')(express)
   , flashify = require('flashify')
   , fs = require('fs')
@@ -16,13 +20,16 @@ var express = require('express')//.createServer()
   , http = require('http')
   , path = require('path');
 
-require('express-namespace');
 
 //require('express-handlebars')(app, Handlebars);
 
-var app = express();
+
 
 var logFile = fs.createWriteStream('./devlog.log', {flags: 'a'});
+
+
+// Configuration
+require('./apps/socket-io')(server, app)
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -31,18 +38,11 @@ app.configure(function(){
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.logger({stream: logFile}));
-  //app.use(require('less-middleware')({ src: __dirname + '/public' }));
-  //app.use(express.static(__dirname + '/public'));
-  //app.use(express.bodyParser());
-  //app.use(express.methodOverride());
-  //app.use(app.router);
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser(
-    "dglkkhlkdglkdlkghmlfgmflgfjhkjhjkdjrwoporzc"
-  ));
+  app.use(express.cookieParser("dglkkhlkdglkdlkghmlfgmf"));
   app.use(express.session({
-    secret: "dgkglkerpozcplcbmqsfalkwjlghfghgvdmglejjgjdlg",
+    secret: "dgkglkerpozcplcblg",
     store: new RedisStore
   }));
   app.use(flashify);
@@ -67,6 +67,6 @@ require('./apps/authentication/routes')(app);
 require('./apps/admin/routes')(app);
 require('./apps/showcase/routes')(app);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+server.listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'))
 });

@@ -38,6 +38,8 @@ routes = (app) ->
         Book.getById req.params.id, (err, book) ->
           if req.body.state in Book.states
             book[req.body.state] ->
+              if socketIO = app.settings.socketIO
+                socketIO.sockets.emit "book:changed", book
               res.send "OK"
           #else
           # res.render 'error',
