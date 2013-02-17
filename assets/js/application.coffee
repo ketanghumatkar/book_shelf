@@ -23,7 +23,8 @@ jQuery ->
     classNames  = $(@).attr('class').split(' ')
     statesArray = _.reject classNames, (className) -> className is 'on'
     state       = statesArray[0]
-    $.ajax "/admin/pies/#{dataId}",
+    console.log("....."+statesArray)
+    $.ajax "/admin/books/#{dataId}",
       type:'PUT'
       data: {state}
     $(@).closest('tr').find('td.status div').removeClass 'on'

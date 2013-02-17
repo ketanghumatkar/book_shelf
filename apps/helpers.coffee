@@ -8,9 +8,9 @@ helpers = (app) ->
         "/admin/books/"
     cssClassForState: (expected, actual) ->
       if actual is expected
-        [expected, 'on']
+        [actual, 'on']
       else
-        actual
+        expected
     #currentUser: (req, res) ->
     #  if req.session
     #    req.session.currentUser

@@ -4,7 +4,7 @@ class Book
   @key: ->
     #"book_shelf_#{process.env.NODE_ENV}"
     "book_shelf_development"
-  @states: -> ['unread', 'reading', 'read']
+  @states: ['unread', 'reading', 'read']
   @all: (callback) ->
     redis.hgetall Book.key(), (err, objects) ->
       books = []
