@@ -24,16 +24,22 @@ block content
           td= book.name
           td= book.author
           td= book.language
-          td
-            case book.state
-              when "read"
-                i.icon-ok
-              when "reading"
-                p Yeah, readin'
-              when "unread"
-                p Nope
-              default
-                i.icon-thumbs-down
+          td.status
+            div(class=cssClassForState('unread', book.state))
+              p unread
+            div(class=cssClassForState('reading', book.state))
+              p reading
+            div(class=cssClassForState('read', book.state))
+                p read
+            //case book.state
+            //  when "read"
+            //    i.icon-ok
+            //  when "reading"
+            //    p Yeah, readin'
+            //  when "unread"
+            //    p Nope
+            //  default
+            //    i.icon-thumbs-down
           td
             a.btn.btn-mini.btn-danger
               i.icon-remove.icon-white

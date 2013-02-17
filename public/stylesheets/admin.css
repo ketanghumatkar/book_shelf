@@ -1,0 +1,33 @@
+td.status div, td.status div p {
+  display: inline-block;
+}
+td.status .unread,
+td.status .reading,
+td.status .read {
+  cursor: pointer;
+  font-size: 12px;
+  background-size: 2.7777777777777777em;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  letter-spacing: 0;
+  opacity: 0.5;
+  padding: 0 5px;
+}
+td.status .unread:hover,
+td.status .reading:hover,
+td.status .read:hover,
+td.status .unread.on,
+td.status .reading.on,
+td.status .read.on {
+  opacity: 1;
+  box-shadow: inset 1px 3px 3px #ccc;
+}
+td.status div.unread p {
+  color: #ccc;
+}
+td.status div.reading p {
+  color: #444;
+}
+td.status div.read p {
+  color: #0f0;
+}
