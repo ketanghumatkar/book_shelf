@@ -10,6 +10,10 @@ jQuery ->
 
     socket = io.connect("/")
     socket.on "book:changed", (book) ->
+      console.log('A book state is modified');
+      refresh()
+    socket.on "book:deleted", (book) ->
+      console.log('A book is deleted');
       refresh()
 
     setTimeout refresh, 1000*60
