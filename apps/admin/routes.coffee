@@ -47,7 +47,9 @@ routes = (app) ->
       app.get '/:id/delete', (req, res) ->
         Book.getById req.params.id, (err, book) ->
           book.delete (err, book) ->
-            req.flash "success", "Book - #{book.name} deleted successfully"
+            if socketIO = app.settings.socketIO
+              socketIO.sockets.emit "book:deleted", book
+            req.flash "error", "Book - #{book.name} deleted successfully"
             res.redirect '/admin/books'
 
 module.exports = routes
